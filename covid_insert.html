@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>코로나 예방 수칙</title>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3b9fc711131ecabb713a7fc9de962624&libraries=clusterer"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 20px;
+            color: #555;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>코로나 예방 수칙</h1>
+    <p>코로나바이러스 감염증 (COVID-19)을 예방하기 위한 중요한 수칙은 다음과 같습니다:</p>
+    
+    <ul>
+        <li>손을 자주 비누와 물로 씻기 또는 알코올 소독제를 사용하세요.</li>
+        <li>마스크를 착용하여 입과 코를 가려주세요.</li>
+        <li>사람이 많은 장소를 피하고 거리두기를 실천하세요.</li>
+        <li>콧물이나 기침을 할 때 팔꿈치로 입과 코를 가리세요.</li>
+        <li>사용한 휴지나 일회용용품을 올바르게 폐기하세요.</li>
+        <li>가장 중요한 예방 조치는 백신을 맞는 것입니다. 가능하면 백신을 접종하세요.</li>
+    </ul>
+
+  <!-- <p style="margin-top:-12px">
+      사용한 데이터를 보시려면 
+      <em class="link"> -->
+         <!-- <a href="/download/web/data/chicken.json" target="_blank">여기를 클릭하세요!</a> -->
+      <!-- </em> -->
+  </p>
+  <div id="map" style="width:50%;height:350px;"></div>
+  
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3b9fc711131ecabb713a7fc9de962624&libraries=clusterer"></script>
+  <script>
+      var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+          center : new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표 
+          level : 14 // 지도의 확대 레벨 
+      });
+      
+      // 마커 클러스터러를 생성합니다 
+      var clusterer = new kakao.maps.MarkerClusterer({
+          map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+          averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+          minLevel: 10 // 클러스터 할 최소 지도 레벨 
+      });
+   
+      // 데이터를 가져오기 위해 jQuery를 사용합니다
+      // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
+      $.get("/download/web/data/chicken.json", function(data) {
+    var markersData = data.positions;
+
+    var seoulMarkers = [];
+    var gyeonggiMarkers = [];
+
+    // 데이터를 서울과 경기도로 분리
+    markersData.forEach(function (position) {
+        if (position.city === '서울') {
+            seoulMarkers.push(new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(position.lat, position.lng)
+            }));
+        } else if (position.city === '경기도') {
+            gyeonggiMarkers.push(new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(position.lat, position.lng)
+            }));
+        }
+    });
+
+    // 클러스터러에 서울 마커들 추가
+    clusterer.addMarkers(seoulMarkers);
+
+    // 다른 지역을 처리하려면 마찬가지로 클러스터러에 추가
+    // clusterer.addMarkers(gyeonggiMarkers);
+});
+  </script>
+
+  
+  </body>
+  </html>
+
+    <p> COVID-19에 대한 최신 정보와 조언을 확인하려면? </p>
+    <li><a href="https://ncov.kdca.go.kr/">코로나 바이러스 감염증</a><br></li>
+    <li><a href="https://covid19.who.int/">전세계 코로나 바이러스 환자 수</a> <br></li>
+    <li><a href="https://www.seoul.go.kr/coronaV/coronaStatus_old.do?menu_code=47">서울시 코로나 19</a><br></li>
+    <div class="caption">
+        <a href="index.html">뒤로 가기</a>
+    </div>
+</body>
+</html>

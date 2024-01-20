@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>다음 지도 API</title>
+</head>
+<body>
+	<div id="map" style="width:750px;height:350px;"></div>
+	<div id="roadview" style="width:750px;height:350px;"></div>
+
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3b9fc711131ecabb713a7fc9de962624"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption ={
+		        center: new kakao.maps.LatLng(37.56697, 126.97983), // 지도의 중심좌표
+						// new kakao.maps.LatLng(37.57982, 126.9771), // 경복궁
+		        level: 8, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 지도에 마커를 생성하고 표시한다
+		var marker = new kakao.maps.Marker({
+		    position: new kakao.maps.LatLng(37.56697, 126.97983), // 마커의 좌표
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+		//로드뷰를 표시할 div
+		var roadviewContainer = document.getElementById('roadview'); 
+
+		// 로드뷰 위치
+		var rvPosition = new kakao.maps.LatLng(37.56613, 126.97853);
+
+		//로드뷰 객체를 생성한다
+		var roadview = new kakao.maps.Roadview(roadviewContainer, {
+			panoId : 1050215190, // 로드뷰 시작 지역의 고유 아이디 값
+			panoX : 126.97853, // panoId가 유효하지 않을 경우 지도좌표를 기반으로 데이터를 요청할 수평 좌표값
+			panoY : 37.56613, // panoId가 유효하지 않을 경우 지도좌표를 기반으로 데이터를 요청할 수직 좌표값
+			pan: 320.4682883419894, // 로드뷰 처음 실행시에 바라봐야 할 수평 각
+			tilt: 3.676611746906153, // 로드뷰 처음 실행시에 바라봐야 할 수직 각
+			zoom: -3 // 로드뷰 줌 초기값
+		}); 
+
+		// 로드뷰 초기화가 완료되었을 때 로드뷰에 마커나 커스텀오버레이를 표시한다
+		kakao.maps.event.addListener(roadview, 'init', function() {
+		});
+
+		// 로드뷰 초기화 완료 이벤트를 등록한다
+		kakao.maps.event.addListener(roadview, 'init', function() {
+		    console.log('로드뷰 초기화가 완료되었습니다');
+		});
+
+		// 로드뷰 파노라마 ID 변화 이벤트를 등록한다
+		kakao.maps.event.addListener(roadview, 'panoid_changed', function() {
+		    console.log('로드뷰의 파노라마 ID가 변경되었습니다');
+		});
+
+		// 로드뷰 시점 변화 이벤트를 등록한다
+		kakao.maps.event.addListener(roadview, 'viewpoint_changed', function() {
+			console.log('로드뷰 시점이 변경되었습니다');
+		});
+
+		// 로드뷰 지도 좌표 변화 이벤트를 등록한다
+		kakao.maps.event.addListener(roadview, 'position_changed', function() {
+		    console.log('로드뷰 좌표가 변경되었습니다');
+		});
+
+	</script>
+</body>
+</html>

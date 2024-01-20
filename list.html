@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="css/css.css">
+    <style>
+        /* CSS 스타일을 이용하여 로그인 버튼을 오른쪽 맨 위에 배치합니다. */
+        .container {
+    position: relative;
+    }
+
+    .login-button {
+        position: absolute;
+        top: 10px; /* 위에서 약간 띄웁니다. */
+        right: 10px; /* 오른쪽에서 약간 떨어지게 배치합니다. */
+        padding: 10px 20px; /* 버튼의 내부 여백을 추가하여 크기를 늘립니다. */
+        background-color: blue; /* 파란색 배경색을 적용합니다. */
+        color: white; /* 글자색을 흰색으로 설정합니다. */
+        border: none; /* 테두리 제거 */
+        border-radius: 5px; /* 둥근 모서리를 적용합니다. */
+        cursor: pointer; /* 커서를 포인터로 변경하여 버튼임을 나타냅니다. */
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    .bt_wrap {
+            display: inline-block;
+            margin-right: 10px; /* 버튼 사이의 간격을 설정합니다. */
+        }
+
+    .bt_wrap a {
+        display: inline-block;
+        padding: 10px 20px; /* 버튼 크기 조절 */
+        background-color: blue; /* 파란색 배경색 적용 */
+        color: white; /* 텍스트 색상을 흰색으로 설정 */
+        text-decoration: none; /* 링크에 밑줄 제거 */
+        border-radius: 5px; /* 둥근 모서리 설정 */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="login-button"><a href="login.html">로그인</a></button>
+    </div>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+        <div class="board_list_wrap">
+            <div class="board_list">
+                <div class="top">
+                    <div class="num">번호</div>
+                    <div class="title">제목</div>
+                    <div class="writer">글쓴이</div>
+                    <div class="date">작성일</div>
+                    <div class="count">조회</div>
+                </div>
+                <div>
+                    <div class="num">1</div>
+                    <div class="title"><a href="view.html">23년도 하반기 공지</a></div>
+                    <div class="writer">상준</div>
+                    <div class="date">2023.10.20</div>
+                    <div class="count">108</div>
+                </div>
+                <div>
+                    <div class="num">2</div>
+                    <div class="title"><a href="view.html">1차 수정 완료했습니다 😀</a></div>
+                    <div class="writer">상준</div>
+                    <div class="date">2023.10.21</div>
+                    <div class="count">100</div>
+                </div>
+                <div>
+                    <div class="num">3</div>
+                    <div class="title"><a href="view.html">2차 수정 완료했습니다 😂.</a></div>
+                    <div class="writer">상준</div>
+                    <div class="date">2023.10.21</div>
+                    <div class="count">98</div>
+                </div>
+                <div>
+                    <div class="num">4</div>
+                    <div class="title"><a href="view.html">22일 오류 관련 공지</a></div>
+                    <div class="writer">상준</div>
+                    <div class="date">2023.10.22</div>
+                    <div class="count">78</div>
+                </div>
+                <div>
+                    <div class="num">5</div>
+                    <div class="title"><a href="view.html">오류 수정 완료 내역 보고.</a></div>
+                    <div class="writer">상준</div>
+                    <div class="date">2023.10.23</div>
+                    <div class="count">65</div>
+                </div>
+            </div>
+            <div class="board_page">
+                <a href="#" class="bt first"><<</a>
+                <a href="#" class="bt prev"><</a>
+                <a href="#" class="num on">1</a>
+                <a href="#" class="num">2</a>
+                <a href="#" class="num">3</a>
+                <a href="#" class="num">4</a>
+                <a href="#" class="num">5</a>
+                <a href="#" class="bt next">></a>
+                <a href="#" class="bt last">>></a>
+            </div>
+            <div class="button-container">
+                <div class="bt_wrap">
+                    <a href="write.html" class="on">등록</a>
+                    <!--<a href="#">수정</a>-->
+                </div>
+            </div>
+            <div class="button-container">
+                <div class="bt_wrap">
+                    <a href="index.html" class="on">뒤로가기</a>
+                <!--<a href="#">수정</a>-->
+                </div>
+            </div>
+                
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <section class="login-form">
+        <h1>로그인<h1>
+        <form action="">
+            <div class="int-area">
+                <input type="text" name="id" id="id"
+                autocomplete="off" required>
+                <label for="id">USER NAME</label>
+            </div>
+            <div class="int-area">
+                <input type="password" name="pw" id="pw"
+                autocomplete="off" required>
+                <label for="pw">PASSWORD</label>
+            </div>
+            <div class="btn-area">
+                <button id="loginButton"
+                type="submit">LOGIN</button>
+            </div>
+        </form>
+        <div class="caption">
+            <!-- <a href="#">비밀번호를 까먹으셨나요?</a> -->
+            <a href="signup.html">회원가입 하기</a>
+        </div>
+        <div class="caption">
+            <!-- <a href="#">비밀번호를 까먹으셨나요?</a> -->
+            <a href="index.html">뒤로 가기</a>
+        </div>
+        
+    </section>
+
+    <script>
+        let id = $('#id');
+        let pw = $('#pw');
+        let btn = $('#loginButton');
+
+        $(btn).on('click', function() {
+            if ($(id).val() == "" || $(pw).val() == "") { // 아이디나 비번 둘 중 하나라도 입력되지 않으면
+                $('label').addClass('warning'); // 경고창을 표시하세요
+                setTimeout(function() {
+                    $('label').removeClass('warning');
+                }, 1500); // 그 주기는 1.5초로 설정할게요
+            } else {
+                const enteredId = $(id).val();
+                const enteredPassword = $(pw).val();
+                if (enteredId == "1234" && enteredPassword == "1234") {
+                    window.location.href = "list.html"; // 둘 다 입력이 되면 로그인 성공 페이지로 넘어갈게요
+                } else {
+                    alert("아이디 또는 비밀번호가 올바르지 않습니다."); // 모든 상황이 아니라면 저 글을 출력합니다
+                }
+            }
+        });
+    </script>
+</body>
+</html>
