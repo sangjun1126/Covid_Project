@@ -2,3 +2,5 @@
 
 * Html 기초와 API 사용 + 코로나 자료 조사를 중점으로 진행했던 프로젝트입니다.
 * 수정 예정
+
+[코로나 19 프로젝트.pptx](https://github.com/sangjun1126/Covid_Project/files/14048281/19.pptx)
